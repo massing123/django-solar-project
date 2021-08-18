@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+{% block title %}Signup{% endblock title %}
+<head>
+</head> 
+
+{% block body %}
+ 
+{%load static %}
+    <link rel="stylesheet" href="{% static 'style1.css' %}">
+    {% comment %} <link rel="stylesheet" href="{% static 'style2.css' %}"> {% endcomment %}
+    {% if messages %}
+            {% for message in messages %}
+
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong>{{message}}</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {%  endfor %}
+        {% endif %}
+
+
+ {% comment %} <h2>Modal Signup Form</h2> {% endcomment %}
+    <div class="container-fluid"> 
+    <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Sign Up</button>
+    <div id="id01" class="modal">
+  <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+  <form class="modal-content" action="/signupme" method="post">        
+    {% csrf_token %}
+    <div class="container">
+      <h1>Registration</h1>
+      <p>Please fill in this form to create an account.</p>
+      <hr>
+      <label for="First_Name"><b>First Name</b></label>
+      <input type="text" placeholder="First Name" name="First_Name" required>
+
+      <label for="Last_Name"><b>Last Name</b></label>
+      <input type="text" placeholder="Last Name" name="Last_Name" required>
+
+      <label for="Company_Name"><b>Company Name</b></label>
+      <input type="text" placeholder="Company Name" name="Company_Name" required>
+
+      <label for="Company_Address"><b>Company Address</b></label>
+      <input type="text" placeholder="Company Address" name="Company_Address" required>
+
+      <label for="Communication_Address"><b>Communication Address</b></label>
+      <input type="text" placeholder="Communication Address" name="Communication_Address" required>
+
+      <label for="Mobile_No"><b>Mobile No</b></label>
+      <input type="phone" placeholder="Mobile No" name="Mobile_No" required>
+
+<label for="Landline_No"><b>Landline No</b></label>
+      <input type="phone" placeholder="Landline No" name="Landline_No" required>
+
+      <label for="email"><b>Email</b></label>
+      <input type="email" placeholder="Enter Email" name="email" required>
+
+      <label for="GST"><b>GST No</b></label>
+      <input type="text" placeholder="Enter GST" name="GST" required>
+
+      <label for="website"><b>Website</b></label>
+      <input type="text" placeholder="Enter your Website URL" name="website" required>
+
+      <label for="psw"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="psw" required>
+
+      <label for="psw_repeat"><b>Repeat Password</b></label>
+      <input type="password" placeholder="Repeat Password" name="psw_repeat" required>
+      
+      <label>
+        <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
+      </label>
+
+      <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
+
+      <div class="clearfix">
+        <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+        <button type="submit" class="signupbtn">Sign Up</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<script>
+// Get the modal
+var modal = document.getElementById('id01');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
+
+    
+  </div>
+</form>
+
+        
+
+
+
+
+
+
+
+{%endblock body%}
+
+
+
+
